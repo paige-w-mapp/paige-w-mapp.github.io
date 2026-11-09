@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zero to Routine</title>
+<meta name="description" content="Paige Williams on making generative AI a working habit: how she leads change, the Trust Ladder, and case studies with the corrections left in.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Nunito:wght@400;600;800&family=Caveat:wght@500;700&display=swap">
+<meta name="theme-color" content="#1F2A26">
+<meta property="og:title" content="Zero to Routine">
+<meta property="og:description" content="Paige Williams on making generative AI a working habit: how she leads change, the Trust Ladder, and case studies with the corrections left in.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<style>
+/* Notebook: ruled paper, pink margin line, chalkboard masthead, handwritten marginalia, taped screenshots and drawn figures.
+   Two visual tiers of case study: feature (full width figures, attribution strip) and support (narrower, quieter). */
+:root{
+  --paper:#FFFDF8; --rule:#D9E6F1; --ink:#1E2A28; --muted:#55665F; --board:#1F2A26; --chalk:#F4EFE6; --chalk-muted:#C9D5D0;
+  --pink:#E8558E; --pink-soft:#FFE3EE; --pink-ink:#B9306A; --green:#2E7D5B; --green-soft:#DDEFE4; --gold:#F2C14E; --gold-soft:#FFF1B8;
+  --card:#FFFFFF; --edge:#E6DDD0; --shadow:6px 6px 0 var(--pink-soft);
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif; --body:"Nunito","Helvetica Neue",Arial,sans-serif; --hand:"Caveat","Segoe Print",cursive;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;margin:0}
+h1,h2,h3,h4{font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1.08;margin:0;text-wrap:balance}
+h2{font-size:clamp(28px,4.2vw,40px)}
+h3{font-size:24px}
+h4{font-size:17px;letter-spacing:-.01em}
+p{margin:0}
+a{color:var(--pink-ink)}
+img,svg{max-width:100%}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));position:relative}
+section{padding-block:60px;position:relative;scroll-margin-top:16px}
+.ruled{background-image:repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px)}
+.ruled .wrap::before{content:"";position:absolute;left:-26px;top:-60px;bottom:-60px;width:2px;background:var(--pink);opacity:.75}
+@media (max-width:940px){.ruled .wrap::before{left:4px}}
+.hand{font-family:var(--hand);font-size:24px;line-height:1.1;color:var(--pink-ink);font-weight:500}
+.margin-note{display:block;margin-top:16px;transform:rotate(-2deg);max-width:340px}
+.margin-note.right{margin-left:auto;text-align:right;transform:rotate(1.5deg)}
+.lede{margin-top:14px;max-width:660px;font-size:18px}
+.pg{position:absolute;right:0;top:18px;font-family:var(--hand);font-size:20px;color:var(--muted);opacity:.8}
+.skip{position:absolute;left:-999px;top:8px;background:var(--pink);color:#fff;padding:8px 12px;border-radius:6px;z-index:60}
+.skip:focus{left:8px}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.16;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>")}
+.hl{background:linear-gradient(104deg,transparent 2%,var(--pink-soft) 6%,#FFD1E2 92%,transparent 96%);padding:0 .15em;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hl.g{background:linear-gradient(98deg,transparent 3%,var(--green-soft) 7%,#CDE8D8 93%,transparent 97%)}
+.hl.y{background:linear-gradient(101deg,transparent 2%,var(--gold-soft) 5%,#FFE98A 94%,transparent 97%)}
+
+/* masthead */
+.mast{background:var(--board);color:var(--chalk);padding-block:64px 84px;position:relative;overflow:hidden}
+.mast .wrap{display:grid;grid-template-columns:1fr 240px;gap:32px;align-items:center}
+@media (max-width:760px){.mast .wrap{grid-template-columns:1fr}}
+.mast .name{font-size:15px;font-weight:800;letter-spacing:.02em;color:var(--chalk-muted)}
+.mast h1{font-size:clamp(46px,10vw,104px);color:var(--chalk);margin-top:10px}
+.mast h1 .pk{color:var(--pink);position:relative;display:inline-block}
+.mast h1 .pk::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.12em;background:var(--pink);border-radius:999px;opacity:.45}
+.mast .claim{font-family:var(--display);font-weight:500;font-size:clamp(19px,2.6vw,24px);color:var(--chalk);margin-top:18px}
+.mast .intro{max-width:560px;margin-top:16px;color:var(--chalk-muted);font-size:17px}
+.mast .intro strong{color:var(--chalk);font-weight:600}
+.polaroid{background:#fff;padding:12px 12px 44px;box-shadow:0 14px 30px -22px rgba(0,0,0,.6);transform:rotate(3deg);position:relative;justify-self:end;width:240px}
+.polaroid .ph{aspect-ratio:4/5;overflow:hidden}
+.polaroid .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.polaroid .cap{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-family:var(--hand);font-size:22px;color:var(--ink)}
+.tape{position:absolute;width:90px;height:26px;background:rgba(242,193,78,.75);transform:rotate(-6deg);top:-12px;left:calc(50% - 45px);border-radius:2px}
+.arrow-note{position:absolute;left:-150px;top:30px;width:150px;font-family:var(--hand);font-size:22px;color:var(--pink);line-height:1;text-align:right}
+.arrow-note svg{display:block;margin-left:auto;width:70px;height:40px;overflow:visible}
+@media (max-width:760px){.arrow-note{display:none}.polaroid{justify-self:start;transform:rotate(-2deg)}}
+.sticky{position:absolute;right:16px;bottom:-26px;background:#FFE98A;color:#3A3015;font-family:var(--hand);font-size:22px;line-height:1.1;padding:16px 18px;width:220px;transform:rotate(-3deg);box-shadow:0 10px 24px -18px rgba(0,0,0,.6)}
+@media (max-width:760px){.sticky{position:static;transform:rotate(-2deg);margin-top:28px}}
+
+/* contents strip */
+.toc{background:var(--pink-soft);border-bottom:1px solid #F3CFDD;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.toc .wrap{display:flex;gap:4px 16px;flex-wrap:wrap;align-items:center;padding-block:10px;font-size:14px}
+.toc .lbl{font-family:var(--hand);font-size:19px;color:var(--pink-ink);margin-right:2px}
+.toc a{color:var(--ink);text-decoration:none;font-weight:800;border-bottom:2px solid transparent;padding:2px 0}
+.toc a:hover,.toc a:focus-visible{border-bottom-color:var(--pink)}
+
+/* index card */
+.index-card{background:var(--card);border-radius:6px;box-shadow:var(--shadow);border:1px solid var(--edge);padding:26px 28px 24px;margin-top:22px;max-width:700px;position:relative;background-image:repeating-linear-gradient(to bottom,transparent 0 29px,#EEF3F8 29px 30px);border-top:6px solid var(--pink)}
+.index-card ul{margin:0;padding:0;display:grid;gap:12px}
+.index-card li{list-style:none;padding-left:30px;position:relative;line-height:1.5}
+.index-card li::before{content:"";position:absolute;left:2px;top:.45em;width:14px;height:14px;border:2px solid var(--green);border-radius:3px;background:#fff}
+.index-card li::after{content:"";position:absolute;left:6px;top:.5em;width:5px;height:9px;border:solid var(--green);border-width:0 2.5px 2.5px 0;transform:rotate(40deg)}
+
+/* how I lead: compact figure plus disclosure */
+.lead-fig{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:700px){.lead-fig{grid-template-columns:1fr}}
+.sys{background:var(--card);border:1px solid var(--edge);border-radius:8px;padding:20px 18px 16px;position:relative;min-width:0;box-shadow:5px 5px 0 var(--green-soft)}
+.sys:nth-child(2){box-shadow:5px 5px 0 var(--pink-soft)}
+.sys:nth-child(3){box-shadow:5px 5px 0 var(--gold-soft)}
+.sys .when{font-family:var(--hand);font-size:19px;color:var(--pink-ink);line-height:1.1}
+.sys h3{font-size:21px;margin-top:4px}
+.sys .one{margin-top:10px;font-size:15.5px;color:var(--muted);line-height:1.5}
+.sys ol{margin:12px 0 0;padding:0 0 0 2px;list-style:none;display:grid;gap:5px;font-size:14.5px;font-weight:800;counter-reset:s}
+.sys ol li{position:relative;padding-left:26px}
+.sys ol li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;background:var(--green);color:#fff;font-size:11px;display:grid;place-items:center;font-weight:800}
+.sys:nth-child(2) ol li::before{background:var(--pink)}
+.sys:nth-child(3) ol li::before{background:#C9931E}
+.sys .sum{margin-top:12px;font-size:14.5px;font-weight:800;color:var(--green)}
+.sys:nth-child(2) .sum{color:var(--pink-ink)}
+.sys:nth-child(3) .sum{color:#9A6E0E}
+.bridge{margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;max-width:700px}
+.bridge svg{width:54px;height:54px;flex:none}
+.bridge p{font-size:16.5px}
+details.more{margin-top:22px;border:2px dashed var(--pink);border-radius:8px;padding:0}
+details.more summary{cursor:pointer;padding:14px 18px;font-weight:800;list-style:none;display:flex;gap:10px;align-items:center}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";font-family:var(--display);font-size:22px;line-height:1;color:var(--pink-ink);width:22px}
+details.more[open] summary::before{content:"\2013"}
+details.more .inner{padding:4px 18px 18px;display:grid;gap:22px}
+.flow h4{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.flow h4 small{font-family:var(--body);font-weight:600;font-size:14px;color:var(--muted)}
+.flow-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px}
+.fs{background:var(--paper);border:1px solid var(--edge);border-radius:6px;padding:12px 12px 10px;min-width:0}
+.fs b{display:block;font-family:var(--display);font-weight:800;font-size:14.5px;line-height:1.2;margin-bottom:5px}
+.fs span{display:block;font-size:13.5px;color:var(--muted);line-height:1.45}
+.fs i{display:block;font-style:normal;font-family:var(--hand);font-size:17px;color:var(--pink-ink);margin-top:6px;line-height:1.1}
+.receipts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:26px}
+.receipts div{background:var(--board);color:var(--chalk);border-radius:8px;padding:14px 16px}
+.receipts b{display:block;font-family:var(--display);font-weight:800;font-size:18px;line-height:1.15;color:var(--chalk)}
+.receipts span{display:block;font-size:13px;color:var(--chalk-muted);margin-top:6px}
+.principles{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.principles span{border:2px solid var(--pink);color:var(--pink-ink);font-weight:800;font-size:13.5px;padding:5px 11px;border-radius:999px}
+
+/* ladder */
+.ladder-grid{display:grid;grid-template-columns:140px 1fr;gap:28px;margin-top:30px;align-items:stretch}
+@media (max-width:640px){.ladder-grid{grid-template-columns:1fr}.ladder-svg{display:none}}
+.ladder-svg{width:100%;height:100%}
+.rung{padding:18px 0;border-bottom:2px dashed var(--rule)}
+.rung:last-child{border-bottom:0}
+.rung .top{display:flex;gap:12px;align-items:baseline}
+.rung .n{font-family:var(--hand);font-size:34px;color:var(--pink-ink);line-height:1}
+.rung .what{margin-top:6px}
+.rung .ex{margin-top:10px;font-size:15.5px;color:var(--muted);padding:10px 14px;background:var(--green-soft);border-radius:8px;display:inline-block}
+
+/* case studies */
+.tier{font-family:var(--hand);font-size:26px;color:var(--pink-ink);margin-top:40px;display:flex;gap:12px;align-items:center}
+.tier::after{content:"";flex:1;height:2px;background:var(--pink);opacity:.4}
+.cases{display:grid;gap:40px;margin-top:22px}
+.case{background:var(--card);border-radius:8px;box-shadow:var(--shadow);border:1px solid var(--edge);padding:30px 30px 28px;display:grid;gap:18px;min-width:0;position:relative;scroll-margin-top:70px}
+.case::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--pink)}
+.case::after{content:"";position:absolute;left:0;right:0;top:-1px;height:10px;background:radial-gradient(circle at 10px 0,var(--paper) 5px,transparent 6px) repeat-x;background-size:24px 10px}
+.case .meta{font-size:13.5px;color:var(--muted);font-weight:800}
+.case h3{font-size:clamp(23px,3.4vw,30px)}
+.case.feature h3{font-size:clamp(26px,4vw,36px)}
+.case.feature{padding:34px 34px 30px}
+.case.support{box-shadow:4px 4px 0 var(--green-soft);padding:24px 24px 22px;max-width:760px}
+.case.support::before{background:var(--green)}
+.case.support h3{font-size:clamp(21px,3vw,25px)}
+.case.support p,.case.support .steps p{font-size:16px}
+.figure{margin:4px 0 2px;display:grid;gap:10px}
+.figure figcaption{font-family:var(--hand);font-size:21px;color:var(--pink-ink);line-height:1.1}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+@media (max-width:640px){.shots{grid-template-columns:1fr}}
+.shot{position:relative;background:#fff;padding:8px 8px 10px;box-shadow:0 10px 24px -18px rgba(0,0,0,.5);border:1px solid #eee}
+.shot img{display:block;width:100%;height:auto;border-radius:3px}
+.shot .tape{top:-12px}
+.shot.r1{transform:rotate(-1.2deg)}.shot.r2{transform:rotate(1.4deg)}
+.shot.wide{transform:none}
+.annot{position:absolute;font-family:var(--hand);font-size:20px;color:var(--pink-ink);line-height:1;background:rgba(255,253,248,.92);padding:4px 8px;border-radius:4px;border:1px solid var(--pink-soft)}
+.diagram{width:100%;height:auto;max-width:640px}
+.steps{display:grid;gap:14px}
+.step{display:grid;grid-template-columns:96px 1fr;gap:12px}
+.step .k{font-family:var(--display);font-weight:800;color:var(--green);font-size:17px;padding-top:2px}
+.lesson{background:var(--pink-soft);border-radius:10px;padding:16px 18px}
+.lesson b{display:block;font-family:var(--hand);font-size:22px;color:var(--pink-ink);margin-bottom:2px;font-weight:500}
+@media (max-width:480px){.step{grid-template-columns:1fr;gap:4px}}
+details.rungs{border-top:2px dashed var(--rule);padding-top:4px}
+details.rungs summary{cursor:pointer;list-style:none;font-weight:800;padding:10px 0;display:flex;gap:10px;align-items:center;color:var(--green)}
+details.rungs summary::-webkit-details-marker{display:none}
+details.rungs summary::before{content:"\25B8";font-size:14px}
+details.rungs[open] summary::before{content:"\25BE"}
+details.rungs .steps{padding-top:8px}
+.attrib{display:grid;grid-template-columns:1fr 1fr;gap:14px;background:var(--paper);border:1px solid var(--edge);border-radius:8px;padding:16px 18px}
+@media (max-width:560px){.attrib{grid-template-columns:1fr}}
+.attrib h4{font-family:var(--hand);font-weight:500;font-size:21px;color:var(--pink-ink);margin-bottom:6px}
+.attrib ul{margin:0;padding-left:18px;font-size:15px;color:var(--ink);display:grid;gap:4px}
+.attrib .ai h4{color:var(--green)}
+.queue{display:grid;margin-top:34px;max-width:700px}
+.queue .item{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding:14px 0;border-bottom:2px dashed var(--rule)}
+.queue .item:last-child{border-bottom:0}
+.pill{font-family:var(--hand);font-size:19px;color:var(--pink-ink);white-space:nowrap}
+@media (max-width:480px){.queue .item{grid-template-columns:1fr}}
+
+/* tools and off the clock */
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:28px}
+.tool{background:var(--card);border-radius:6px;box-shadow:var(--shadow);border:1px solid var(--edge);padding:22px 20px 20px;position:relative;display:grid;gap:8px;align-content:start;min-width:0;background-image:repeating-linear-gradient(to bottom,transparent 0 27px,#F0F4F8 27px 28px)}
+.tool:nth-child(odd){transform:rotate(-.8deg)}.tool:nth-child(even){transform:rotate(.9deg)}
+.tool:nth-child(3n){box-shadow:6px 6px 0 var(--green-soft)}
+.tool::before{content:"";position:absolute;top:-9px;left:calc(50% - 9px);width:18px;height:18px;border-radius:50%;background:var(--pink);box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
+.tool .tag{font-family:var(--hand);font-size:19px;color:var(--green)}
+.tool b{font-family:var(--display);font-weight:800;font-size:20px;color:var(--ink);letter-spacing:-.01em}
+.tool span.d{font-size:15px;color:var(--muted);line-height:1.5}
+.offclock{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+@media (max-width:700px){.offclock{grid-template-columns:1fr}}
+.offclock .txt p{margin-top:10px;font-size:16px}
+.offclock .mini{display:grid;gap:12px}
+.offclock .mini .shot{padding:6px}
+
+/* recordings */
+.rec-note{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;margin-top:22px;border:2px dashed var(--pink);border-radius:8px;padding:20px 22px;max-width:700px}
+.rec-note .hand{font-size:26px}
+@media (max-width:560px){.rec-note{grid-template-columns:1fr}}
+
+/* board band */
+.board{background:var(--board);color:var(--chalk)}
+.board h2{color:var(--chalk)}
+.board .lede{color:var(--chalk-muted)}
+.lineage{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;margin-top:28px}
+.lineage .l b{display:block;font-family:var(--display);font-weight:800;font-size:20px;color:var(--chalk);margin-bottom:6px}
+.lineage .l span{font-size:15.5px;color:var(--chalk-muted)}
+.lineage .l{border-top:2px dashed rgba(244,239,230,.25);padding-top:14px}
+
+/* teaching, contact */
+.teach{display:grid;margin-top:26px;max-width:700px}
+.teach .t{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:16px 0;border-bottom:2px dashed var(--rule)}
+.teach .t:last-child{border-bottom:0}
+.teach .t .d{font-family:var(--hand);font-size:22px;color:var(--pink-ink);line-height:1.1;padding-top:2px}
+@media (max-width:480px){.teach .t{grid-template-columns:1fr;gap:2px}}
+.contact{display:grid;gap:10px;margin-top:20px}
+.contact .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.contact .row .lbl{width:84px;font-size:13px;color:var(--muted);font-weight:800}
+.contact code{font-family:var(--body);font-size:16px;background:var(--pink-soft);padding:3px 8px;border-radius:6px;user-select:all}
+footer{padding-block:30px 44px;font-size:14px;color:var(--muted)}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+</style>
+
+<a class="skip" href="#cases">Skip to the case studies</a>
+
+<header class="mast">
+  <div class="wrap">
+    <div>
+      <div class="name">Paige Williams</div>
+      <h1>Zero to <span class="pk">Routine</span></h1>
+      <p class="claim">AI workforce enablement, built on behavioral science.</p>
+      <p class="intro">I help people and organizations go from trying generative AI once to <span class="hl y" style="color:#2a2a2a">relying on it every week</span>, without losing their judgment or their voice along the way. <strong>This page shows how I think about that work, with the decisions, the corrections, and the things that failed left in view.</strong></p>
+    </div>
+    <div class="polaroid"><span class="tape"></span>
+      <div class="arrow-note">that's me<svg viewBox="0 0 70 40" aria-hidden="true"><path d="M4 8 C 28 4, 48 14, 64 30" fill="none" stroke="#E8558E" stroke-width="3" stroke-linecap="round"/><path d="M52 30 L 64 30 L 60 18" fill="none" stroke="#E8558E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="ph"><img src="img/paige.webp" alt="Paige Williams, smiling, in a camel blazer in front of a bookshelf" width="640" height="800"></div>
+      <div class="cap">Chicago, 2026</div></div>
+    <div class="sticky">The hard parts stay in. That is the point.</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Contents"><div class="wrap">
+  <span class="lbl">in this notebook</span>
+  <a href="#short">Short version</a>
+  <a href="#lead">How I lead</a>
+  <a href="#ladder">Trust Ladder</a>
+  <a href="#cases">Case studies</a>
+  <a href="#tools">Tools</a>
+  <a href="#teaching">Teaching</a>
+  <a href="#contact">Contact</a>
+</div></nav>
+
+<section class="ruled" id="short">
+  <div class="wrap">
+    <h2>What you are looking at</h2>
+    <div class="index-card">
+      <ul>
+        <li>Ten years of building automation inside organizations, starting long before large language models: process redesign, recruiting workflows, and a data pipeline that recategorized roughly half a million products.</li>
+        <li>Two named methods. One for bringing people through a change, built in recruiting and people operations before AI entered the picture. One, the Trust Ladder, for deciding what an AI tool has earned the right to do.</li>
+        <li>Two years of daily practice with generative AI across a coaching business, a university career office, and a nonprofit people team, with the rules I wrote along the way so the tools produce work I can stand behind.</li>
+        <li>Two flagship cases. A Chicago nonprofit where, after I introduced AI assisted hiring tools, the Executive Director began using AI <span class="hl">on her own</span> to review the employee handbook. And a free career exploration tool I wrote the content for and built with AI, now the first step of my coaching program and the centerpiece of my work with under-resourced career centers.</li>
+      </ul>
+    </div>
+    <span class="hand margin-note right">If you are busy, this card is the whole page.</span>
+    <span class="pg">p. 1</span>
+  </div>
+</section>
+
+<section class="ruled" id="lead">
+  <div class="wrap">
+    <span class="pg">p. 2</span>
+    <h2>How I lead people through a change</h2>
+    <p class="lede">AI adoption is a change problem before it is a technology problem, so this comes first. These three systems are how I bring an operation and its people from where they are to a new way of working. I built them running recruiting at an industrial distributor and people operations at a nonprofit, years before generative AI, and wrote them down for a hiring manager in 2026 with a cake on every step, because a good process should make sense anywhere.</p>
+
+    <div class="lead-fig">
+      <div class="sys">
+        <div class="when">first ninety days</div>
+        <h3>The Entry Sequence</h3>
+        <p class="one">How I take on a team or a problem: understand it from the inside before changing it, then earn the capacity to do the real work.</p>
+        <ol><li>Learn the work myself</li><li>Shadow and listen</li><li>Weigh cost, benefit, risk</li><li>Harvest low hanging fruit</li><li>Reinvest the capacity</li></ol>
+        <p class="sum">Stabilize, reclaim capacity, then spend it where it matters most.</p>
+      </div>
+      <div class="sys">
+        <div class="when">how change sticks</div>
+        <h3>The Rollout Loop</h3>
+        <p class="one">How a new way of working survives contact with the people who have to do it.</p>
+        <ol><li>Prototype with trusted hands</li><li>Make it safe to try</li><li>Let ambassadors carry it</li><li>Roll out with support</li><li>Checkpoint on the calendar</li></ol>
+        <p class="sum">Revise, then run the loop again. The process expects it.</p>
+      </div>
+      <div class="sys">
+        <div class="when">how people come along</div>
+        <h3>Designed Participation</h3>
+        <p class="one">How I get people to join something voluntarily, which is the only way adoption ever lasts.</p>
+        <ol><li>Diagnose what motivates them</li><li>Lower the cost of entry</li><li>Open multiple modes</li><li>Codify what works</li></ol>
+        <p class="sum">When people opt out, I redesign the structure before I push harder.</p>
+      </div>
+    </div>
+
+    <div class="bridge">
+      <svg viewBox="0 0 54 54" aria-hidden="true"><path d="M8 46 C 20 40, 30 20, 46 8" fill="none" stroke="#E8558E" stroke-width="3.5" stroke-linecap="round"/><path d="M34 8 L 46 8 L 46 20" fill="none" stroke="#E8558E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 20 C 12 26, 10 34, 8 46" fill="none" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/></svg>
+      <p>The Trust Ladder below is the same thinking pointed at a tool instead of a team. The Rollout Loop asks whether a change has earned its place in the work; the ladder asks whether an AI output has earned its place in the decision. When I introduce AI to a group, I run both at once: the ladder for the work, Designed Participation for the people.</p>
+    </div>
+
+    <details class="more">
+      <summary>Every step, with the cake</summary>
+      <div class="inner">
+        <div class="flow"><h4>The Entry Sequence <small>when I inherit a team or a problem, roughly my first ninety days</small></h4>
+          <div class="flow-steps">
+            <div class="fs"><b>Learn the work myself</b><span>Train alongside the team. I cannot fix with fidelity what I do not understand.</span><i>Read the cookbook, and the back of the box, before touching the mixer.</i></div>
+            <div class="fs"><b>Shadow and listen</b><span>Watch the work happen. Pain points, workarounds, and trust surface here.</span><i>Spend a shift at the bakery watching where the batter sticks.</i></div>
+            <div class="fs"><b>Weigh cost, benefit, risk</b><span>Grade the work; cross reference the data with what people tell me.</span><i>Decide which recipes are worth the oven time.</i></div>
+            <div class="fs"><b>Harvest low hanging fruit</b><span>Low risk, near free changes that return time and accuracy first.</span><i>Grease the pan. Cheap, easy, saves the whole cake.</i></div>
+            <div class="fs"><b>Reinvest the capacity</b><span>The reclaimed hours become the budget for the work that could not be staffed before.</span><i>Time saved on prep goes into the decorating.</i></div>
+          </div></div>
+        <div class="flow"><h4>The Rollout Loop <small>how change sticks instead of bouncing</small></h4>
+          <div class="flow-steps">
+            <div class="fs"><b>Prototype with trusted hands</b><span>Test with strong, stable performers who carry institutional trust.</span><i>The first batch gets baked next to Grandma.</i></div>
+            <div class="fs"><b>Make it safe to try</b><span>A practice window where the new way cannot hurt anyone's numbers.</span><i>A practice batch nobody has to eat.</i></div>
+            <div class="fs"><b>Let ambassadors carry it</b><span>Trusted voices share it peer to peer; buy in grows without persuasion.</span><i>The good bakers pass the recipe along themselves.</i></div>
+            <div class="fs"><b>Roll out with support</b><span>Training for everyone, open questions, proactive time with everyone impacted.</span><i>Everyone bakes; questions welcome at the counter.</i></div>
+            <div class="fs"><b>Checkpoint on the calendar</b><span>Week three or four review; feedback welcomed in multiple modes. When safety or compliance compresses the timeline, the loop compresses too.</span><i>Taste test on the calendar; adjust the sugar.</i></div>
+          </div></div>
+        <div class="flow"><h4>Designed Participation <small>how I bring people along</small></h4>
+          <div class="flow-steps">
+            <div class="fs"><b>Diagnose what motivates them</b><span>Community, accurate information, challenge, excellence, recognition. Every population is different.</span><i>Some come for the cake, some for the company.</i></div>
+            <div class="fs"><b>Lower the cost of entry</b><span>Joining must not demand what people are unwilling to give. Equal footing invites everyone in.</span><i>Nobody has to bring a from scratch cake to join.</i></div>
+            <div class="fs"><b>Open multiple modes</b><span>Written or spoken, public or private, live or async. More doors, more participation.</span><i>Bake at home, decorate here, or just show up for the tasting.</i></div>
+            <div class="fs"><b>Codify what works</b><span>Charters, calendars, named owners, measurement. The structure outlives any one personality, including mine.</span><i>Write the recipe card so anyone can bake it.</i></div>
+          </div></div>
+        <div><h4 style="margin-bottom:8px">Principles I keep</h4>
+          <div class="principles"><span>Decide the result first, build backward</span><span>Measurement from day one</span><span>Meet resistance with redesign</span><span>Collaborate before anyone is upset</span><span>Codify what works so it lasts</span></div></div>
+      </div>
+    </details>
+    <div class="receipts" aria-label="Results these practices produced">
+      <div><b>100+ weekly overtime hours to zero</b><span>Product change team, industrial distributor, 2019 to 2020</span></div>
+      <div><b>Accuracy and efficiency up 40 percent</b><span>Same redesign, on a business process platform</span></div>
+      <div><b>Hiring diversity up 30 percent</b><span>Diversity talent acquisition build, 2020 to 2022</span></div>
+      <div><b>100 percent externship offer acceptance</b><span>Externship program, 2020 to 2022</span></div>
+    </div>
+    <span class="hand margin-note">Authority moves people once. Trust moves them every time after.</span>
+  </div>
+</section>
+
+<section class="ruled" id="ladder">
+  <div class="wrap">
+    <span class="pg">p. 3</span>
+    <h2>The Trust Ladder</h2>
+    <p class="lede">Most people decide how much to trust AI output <span class="hl">on feel</span>. I decided to make it a sequence. Each rung is a question I answer before moving to the next, and every piece of work on this page went up the same five rungs. It is also what I teach: adults adopt a tool when they can see where their own judgment still lives in the process, and the ladder shows them exactly where.</p>
+    <div class="ladder-grid">
+      <svg class="ladder-svg" viewBox="0 0 140 560" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+        <g fill="none" stroke="#E8558E" stroke-width="5" stroke-linecap="round"><path d="M34 548 C 32 420, 36 300, 33 12"/><path d="M106 548 C 108 420, 104 300, 107 12"/></g>
+        <g fill="none" stroke="#2E7D5B" stroke-width="5" stroke-linecap="round"><path d="M34 60 C 58 56, 82 62, 106 58"/><path d="M34 170 C 58 168, 82 172, 106 169"/><path d="M34 280 C 58 283, 82 278, 106 281"/><path d="M34 390 C 58 388, 82 392, 106 389"/><path d="M34 500 C 58 503, 82 498, 106 500"/></g>
+        <circle cx="70" cy="59" r="6" fill="#F2C14E"/>
+        <text x="70" y="30" text-anchor="middle" font-family="Caveat, cursive" font-size="22" fill="#B9306A">start here</text>
+      </svg>
+      <div class="rungs">
+        <div class="rung"><div class="top"><span class="n">1.</span><h3>Frame</h3></div><p class="what">Start from the operating problem and its constraints, never from the deliverable. The tool cannot tell me what matters; I have to say it first.</p><p class="ex">My weekly job search began as "find six to ten live roles that pass six specific filters," not "write me a prompt."</p></div>
+        <div class="rung"><div class="top"><span class="n">2.</span><h3>Brief</h3></div><p class="what">Write the context down once so it does not have to be retaught: the brand rules, the voice rules, the spec, the handoff file.</p><p class="ex">A two sheet design system that every generated document must follow, read before anything gets built.</p></div>
+        <div class="rung"><div class="top"><span class="n">3.</span><h3>Check</h3></div><p class="what">Verify the output against the thing it claims to describe, not against how good it sounds.</p><p class="ex">A hiring checklist put the reference check in the wrong place. The draft read fine. The real process said otherwise.</p></div>
+        <div class="rung"><div class="top"><span class="n">4.</span><h3>Decide</h3></div><p class="what">Keep what earned it, reject what did not, switch tools when execution falls short of the analysis, and write the lesson down as a rule.</p><p class="ex">After one tool gave excellent feedback and a weak resume, I moved production to another and kept seven rules from the failure.</p></div>
+        <div class="rung"><div class="top"><span class="n">5.</span><h3>Hand off</h3></div><p class="what">Turn the one time task into something that runs without me, then into something other people run.</p><p class="ex">A Monday job sweep that emails me a shortlist. Students drafting resumes before appointments. An Executive Director reviewing a handbook with AI on her own.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ruled" id="cases">
+  <div class="wrap">
+    <span class="pg">p. 4</span>
+    <h2>Up the ladder, one piece of work at a time</h2>
+    <p class="lede">Each case is told the same way: what happened, who did what, and the five rungs for anyone who wants the full climb. Two are the flagships. Four more support them. Each ends with what I would teach from it.</p>
+
+    <div class="tier">the two that matter most</div>
+    <div class="cases">
+
+      <article class="case feature" id="case-nonprofit">
+        <div class="meta">2025 · Early childhood education nonprofit · Senior Manager of People and Culture</div>
+        <h3>How AI spread through a small nonprofit</h3>
+        <p>I joined a Chicago nonprofit to run its people operations and found hiring that depended on memory and goodwill. I did not run a workshop on AI. I used it to produce things the team needed, let the results do the persuading, and watched the practice travel further than I had planned. By the time I left, the Executive Director was using AI herself to review the employee handbook.</p>
+        <figure class="figure">
+          <svg class="diagram" viewBox="0 0 640 300" role="img" aria-label="Sequence of what I did and what I observed at the nonprofit, in order, with observed behavior separated from my own actions">
+            <defs><style>.q{font-family:Nunito,sans-serif;font-size:13.5px;fill:#1E2A28;font-weight:800}.r{font-family:Nunito,sans-serif;font-size:12.5px;fill:#55665F}.hh{font-family:Caveat,cursive;font-size:20px;fill:#B9306A}.lab{font-family:Nunito,sans-serif;font-size:11px;font-weight:800;letter-spacing:.06em}</style></defs>
+            <line x1="40" y1="30" x2="40" y2="280" stroke="#E8558E" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round"/>
+            <text x="70" y="22" class="lab" fill="#2E7D5B">WHAT I DID</text><text x="400" y="22" class="lab" fill="#B9306A">WHAT I OBSERVED</text>
+            <g><circle cx="40" cy="58" r="8" fill="#2E7D5B"/><text x="70" y="54" class="q">Found hiring run on memory</text><text x="70" y="71" class="r">no checklist, every manager interviewing differently</text></g>
+            <g><circle cx="40" cy="108" r="8" fill="#2E7D5B"/><text x="70" y="104" class="q">Generated the tools with AI, from our real process</text><text x="70" y="121" class="r">checklist, Slack status forms, competency question banks</text></g>
+            <g><circle cx="40" cy="158" r="8" fill="#2E7D5B"/><text x="70" y="154" class="q">Caught and fixed the wrong reference check sequence</text><text x="70" y="171" class="r">corrected against how we actually hired, in front of the team</text></g>
+            <g><circle cx="40" cy="208" r="8" fill="#2E7D5B"/><text x="70" y="204" class="q">Handed managers finished question banks, then encouraged</text><text x="70" y="221" class="r">other uses, one task at a time, as they came up</text></g>
+            <g><rect x="392" y="92" width="232" height="26" rx="13" fill="#FFE3EE"/><text x="508" y="110" text-anchor="middle" class="r" fill="#B9306A" font-weight="800">managers used the banks in interviews</text></g>
+            <g><rect x="392" y="192" width="232" height="26" rx="13" fill="#FFE3EE"/><text x="508" y="210" text-anchor="middle" class="r" fill="#B9306A" font-weight="800">staff brought AI to other tasks</text></g>
+            <g><circle cx="40" cy="262" r="10" fill="#F2C14E"/><text x="70" y="258" class="q">By the time I left</text><text x="70" y="275" class="hh">the Executive Director was reviewing the handbook with AI, on her own</text></g>
+          </svg>
+          <figcaption>What I did on the left. What I saw on the right. The last line is observed, not claimed.</figcaption>
+        </figure>
+        <div class="attrib">
+          <div><h4>What I did</h4><ul><li>Diagnosed the operational problem and chose where to start</li><li>Supplied the real hiring stages, competencies, and tracking</li><li>Caught the reference check error and set the correction standard</li><li>Decided to hand over finished outputs rather than ask for prompting</li><li>Encouraged and supported wider use over the following months</li></ul></div>
+          <div class="ai"><h4>What AI did</h4><ul><li>Drafted the hiring checklist from my stages</li><li>Generated competency based question banks per opening</li><li>Helped design the Slack workflow forms for candidate status</li></ul></div>
+        </div>
+        <details class="rungs"><summary>How it went up the ladder</summary>
+          <div class="steps">
+            <div class="step"><div class="k">Frame</div><p>The problem was consistency: every hiring manager interviewed differently, and steps were skipped because nothing wrote them down. The goal was a process people would actually follow, not a policy.</p></div>
+            <div class="step"><div class="k">Brief</div><p>I gave the tool our real stages, the competencies for each role, and the tracking we already used, then generated a hiring checklist, Slack workflow forms for candidate status, and competency based interview question banks for each opening.</p></div>
+            <div class="step"><div class="k">Check</div><p>The first checklist read cleanly and was wrong. It placed reference checks after the offer decision. In our process, references are requested before the final interview and checked after it, before any offer. I corrected the sequence against how we actually hired, and that correction became the standard for everything after it.</p></div>
+            <div class="step"><div class="k">Decide</div><p>I handed managers finished question banks rather than asking them to generate their own. In Designed Participation terms, that is lowering the cost of entry: the first experience with the new workflow asked nothing of them but to use it. The Rollout Loop's "make it safe to try" is the same instinct.</p></div>
+            <div class="step"><div class="k">Hand off</div><p>Once the hiring tools were in use, I started encouraging people to bring AI to other tasks they were already doing, one at a time. By the time I left, the Executive Director was using it herself to review the employee handbook. I cannot claim I caused that, but I can describe what came before it.</p></div>
+          </div></details>
+        <div class="lesson"><b>What I would teach from this</b><p>Adoption is a trust problem before it is a training problem. Start with useful work, show the process, fix the first error where people can see it, and make independent experimenting easy. In this case, the most senior person in the building picked it up without being asked.</p></div>
+      </article>
+
+      <article class="case feature" id="case-careerfit">
+        <div class="meta">July to October 2026 · Your Career Mentor · About nineteen versions, built with AI</div>
+        <h3>The Career Fit Tool: two worksheets become a product</h3>
+        <p>A free, self guided web tool that walks a job seeker or student through which industries draw them, which work environments suit them, and which strengths they are both good at and actually enjoy, then builds a personal Career Fit Map. It takes 25 to 35 minutes, saves in the browser, and sends a styled summary to the person and to me. It started as two worksheets I had written by hand for my coaching program. I wrote the content. AI wrote the code. I was the product owner, designer, tester, and editor through roughly nineteen versions.</p>
+        <figure class="figure">
+          <div class="shot wide"><span class="tape"></span><img src="img/cft-hero.webp" alt="The Career Fit Tool's opening screen: You are not trying to choose a career today. You are collecting clues." width="1000" height="339"></div>
+          <figcaption>The first line sets the frame: collecting clues, not choosing a career. That one sentence lowers the stakes enough for people to be honest.</figcaption>
+        </figure>
+        <figure class="figure">
+          <div class="shots">
+            <div class="shot r1" style="position:relative"><span class="tape"></span><img src="img/cft-day.webp" alt="An industry profile showing culture signals, a What a day might look like timeline from 9:00 to 4:00, and the verbs of this work" width="880" height="429"><span class="annot" style="right:10px;top:46%">what a day feels like, not a job title</span></div>
+            <div class="shot r2" style="position:relative"><span class="tape"></span><img src="img/cft-pull.webp" alt="Tap once if it pulls you in, twice if it pushes you away: chips for shared purpose, pay, flexibility, leadership quality, and resource scarcity, plus an overall read" width="880" height="320"><span class="annot" style="left:10px;bottom:10px">tap once in, twice away</span></div>
+          </div>
+          <figcaption>Experiential, not occupational. Each of twelve industries gets a day in the life, the real mix of roles, culture signals, a common misconception, and the verbs the work actually involves. The person reacts to each.</figcaption>
+        </figure>
+        <figure class="figure">
+          <svg class="diagram" viewBox="0 0 640 250" role="img" aria-label="The Career Fit Map sorts 72 skills by how good you are at them and whether you enjoy them into four groups: Build Around, Worth Developing, Useful, and Not a Priority">
+            <defs><style>.mq{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:800;fill:#1E2A28}.ms{font-family:Nunito,sans-serif;font-size:12.5px;fill:#55665F}.ma{font-family:Nunito,sans-serif;font-size:11.5px;font-weight:800;fill:#55665F;letter-spacing:.05em}</style></defs>
+            <rect x="120" y="30" width="230" height="90" rx="8" fill="#DDEFE4"/><text x="135" y="58" class="mq">Build Around</text><text x="135" y="78" class="ms">good at it, and enjoy it</text>
+            <rect x="360" y="30" width="230" height="90" rx="8" fill="#FFE3EE"/><text x="375" y="58" class="mq">Worth Developing</text><text x="375" y="78" class="ms">enjoy it, not strong yet</text>
+            <rect x="120" y="130" width="230" height="90" rx="8" fill="#FFF1B8"/><text x="135" y="158" class="mq">Useful</text><text x="135" y="178" class="ms">good at it, but it drains you</text>
+            <rect x="360" y="130" width="230" height="90" rx="8" fill="#EEF3F8"/><text x="375" y="158" class="mq">Not a Priority</text><text x="375" y="178" class="ms">neither, and that is fine</text>
+            <text x="235" y="240" text-anchor="middle" class="ma">ENJOY IT</text><text x="475" y="240" text-anchor="middle" class="ma">NOT YET, OR NOT REALLY</text>
+            <text x="100" y="80" text-anchor="end" class="ma">STRONG</text><text x="100" y="180" text-anchor="end" class="ma">DEVELOPING</text>
+          </svg>
+          <figcaption>The Career Fit Map. The useful signal turned out to be the 4s versus the 3s against the role a person was already chasing. Two of my first clients were aiming at their second best cluster.</figcaption>
+        </figure>
+        <div class="attrib">
+          <div><h4>What I did</h4><ul><li>Wrote the source content: the industries guide and the 72 skill strengths assessment were my coaching worksheets</li><li>Owned scope, wording, data, and privacy decisions through every version</li><li>Tested each version live, reported what broke or felt wrong, and decided what shipped</li><li>Chose the off the shelf stack: WordPress and Elementor, a Zapier webhook, Google Sheets, Gmail, and ruled out three alternatives</li></ul></div>
+          <div class="ai"><h4>What AI did</h4><ul><li>Wrote the code: one self contained HTML, CSS, and JavaScript file pasted into my site</li><li>Drafted one of the twelve industry profiles at my request, which I approved</li><li>Ran regression tests on every version, checked that all 71 work verbs resolve to a skill category, and checked every line of copy for em dashes</li></ul></div>
+        </div>
+        <details class="rungs"><summary>How it went up the ladder</summary>
+          <div class="steps">
+            <div class="step"><div class="k">Frame</div><p>My program front loaded weeks two and three with homework: a long industries reading, a strengths self assessment, employer research worksheets. Clients lost momentum right where momentum is most fragile. At my day job, one person now covers work four people used to hold. I needed something that gathers a person's answers before we meet, so the first conversation starts at the interesting part.</p></div>
+            <div class="step"><div class="k">Brief</div><p>The worksheets were the brief. I gave the tool the industry profiles and the skills list I had already written, the four part structure, and the rules: everything saves in the browser, nothing is asked for until the end, and no job titles in the public tool, because titles are the part people come to me for.</p></div>
+            <div class="step"><div class="k">Check</div><p>Every version was tested on the live site, and the live site kept disagreeing with the draft. Buttons worked but gave no confirmation, so I had visible status added to every action. The site theme overrode the tool's styles and turned thin bars into solid orange blocks, so every rule was scoped to the tool and verified against the live theme. Results arrived as attachments, so they were changed to render inside the email. A 270 KB live file was updated with a twelve edit diff and a checksum rather than re-pasting the whole thing.</p></div>
+            <div class="step"><div class="k">Decide</div><p>The judgment calls are where the behavioral science lives. ESG became a cross cutting lane rather than a thirteenth industry, because ESG people work inside banks, utilities, and manufacturers. Lanes are ranked by where their funding concentrates in the industries a person liked, because raw match counts put the same two lanes at the top for everyone. A "Worth Reconsidering" section flags one dismissed industry per match, because listing every overlap tested as noise. A guided one at a time view and an all at once view both exist, because people differ. "Haven't used this enough to know" is an answer, because guessing produces bad data. Privacy was written down before anything was sold: name and email only at the end, results in a sheet only I open, cohort reports never name a student, and a fictional school for the demo so nothing reads as an official partnership.</p></div>
+            <div class="step"><div class="k">Hand off</div><p>It replaced two weeks of homework in my program and has been the first step for paying clients since August 2026. An institutional version tags every student from a given school and matches their results to that campus's own programs, with a "hidden gem" tag on underused ones. It is the centerpiece of what I bring to small and under-resourced career centers, and the discovery check I would use to measure it is drafted, not built, with every figure to be reported against the number who answered.</p></div>
+          </div></details>
+        <div class="lesson"><b>What I would teach from this</b><p>You can turn what you already know into a working tool without a developer or a budget, if you treat the AI as the builder and yourself as the product owner. Keep the content, the judgment, and the privacy decisions yours, test on the real thing rather than the draft, and write down what you will not do before anyone asks you to do it.</p></div>
+      </article>
+
+    </div>
+
+    <div class="tier">four that support them</div>
+    <div class="cases">
+
+      <article class="case support" id="case-storydeck">
+        <div class="meta">October 2026 · Your Career Mentor · A template, instantiated per client</div>
+        <h3>The Story Deck: interview practice as a TV guide</h3>
+        <p>Clients knew their stories and still rambled in interviews, because they started talking before they had picked which story to tell. So I built practice around that one failure. The Story Deck is a web page shaped like a TV guide: a highlight reel of the client's wins, a rehearsal mode where a question comes up as a card, a clock runs with a green sweet spot between 1:15 and 2:30, and the client answers out loud before flipping the card to the script. Reshoot brings a question back sooner; That's a wrap retires it. Everything stays in the browser. The version here is the template, built for a fictional client named Mary.</p>
+        <figure class="figure">
+          <div class="shots">
+            <div class="shot r1"><span class="tape"></span><img src="img/deck-guide.webp" alt="The Story Deck home screen: a TV guide grid with channels for Highlights, Pilot, Premise, Episodes, Table Read and Call Sheet, each program an interview question" width="1000" height="625"></div>
+            <div class="shot r2"><span class="tape"></span><img src="img/deck-rehearse.webp" alt="Rehearsal mode: the question Tell me about a time you disagreed with your manager, a clock at 0:00 with a green zone from 1:15 to 2:30, and buttons to start the clock, flip to the script, reshoot, or wrap" width="880" height="700"></div>
+          </div>
+          <figcaption>Pick the episode before you start talking. Then the clock, then out loud, then flip.</figcaption>
+        </figure>
+        <div class="attrib">
+          <div><h4>What I did</h4><ul><li>Diagnosed the failure the practice had to fix: talking before choosing</li><li>Designed the format, the two storylines, the runtime zones, and the card structure</li><li>Wrote the question set and the script scaffolds, with placeholders where the client's own detail goes</li><li>Tested it with clients and revised</li></ul></div>
+          <div class="ai"><h4>What AI did</h4><ul><li>Wrote the code for the page, the clock, the card flip, the browser-only practice log, and the optional transcription</li><li>Drafted the fictional sample client's stories for the template</li></ul></div>
+        </div>
+        <details class="rungs"><summary>How it went up the ladder</summary>
+          <div class="steps">
+            <div class="step"><div class="k">Frame</div><p>The problem was not a lack of stories. Clients had the stories and the scripts. The problem was the moment between hearing the question and opening their mouth, and no document fixes that. Only practice does.</p></div>
+            <div class="step"><div class="k">Brief</div><p>I specified the learning mechanics first: answer out loud without looking, compare to the script afterward, get timing feedback while talking, and see the hard questions again sooner than the easy ones. Then the frame: a TV guide, because the client is the main character and the hiring manager wants to watch an episode.</p></div>
+            <div class="step"><div class="k">Check</div><p>The test was whether a client could use it alone between sessions without me explaining it. The instructions, the key shortcuts, and the glossary of terms exist because the first version assumed too much.</p></div>
+            <div class="step"><div class="k">Decide</div><p>Three decisions carry the behavioral science. Recall before review, because telling it from memory is where it sticks. A visible runtime with a green zone, because people cannot feel two minutes while talking. Reshoot and wrap, so the deck spaces the questions a person struggles with instead of cycling through everything evenly. Every take stays on the client's computer; the only thing they bring me is what they choose to.</p></div>
+            <div class="step"><div class="k">Hand off</div><p>It is a template. Each client gets their own deck with their highlight reel, their questions, and their scripts, and a call sheet for the day of. I build the content; the page does the practice.</p></div>
+          </div></details>
+        <div class="lesson"><b>What I would teach from this</b><p>Content is not practice. If the failure happens in the moment of performance, design the rehearsal around that moment, make the feedback visible while it is happening, and let the tool decide what to repeat.</p></div>
+      </article>
+
+      <article class="case support" id="case-resume">
+        <div class="meta">October 2026 · My own job search</div>
+        <h3>The resume that taught me to grade the tool</h3>
+        <p>One AI assistant gave excellent analysis of a role and built a weak resume from it. A second gave thinner feedback and a better document. I told the first one so in plain words, asked it to diagnose the gap, kept seven production rules from the failure, and moved document production to the second tool for good.</p>
+        <figure class="figure">
+          <svg class="diagram" viewBox="0 0 620 200" role="img" aria-label="Scorecard: Tool A, excellent analysis and weak document. Tool B, thinner analysis and strong document.">
+            <defs><style>.lbl{font-family:Nunito,sans-serif;font-size:14px;fill:#1E2A28;font-weight:800}.sm{font-family:Nunito,sans-serif;font-size:13px;fill:#55665F}.hd{font-family:Caveat,cursive;font-size:22px;fill:#B9306A}.chip{font-family:Nunito,sans-serif;font-size:13px;font-weight:800}</style></defs>
+            <text x="230" y="26" text-anchor="middle" class="hd">Tool A</text><text x="470" y="26" text-anchor="middle" class="hd">Tool B</text>
+            <g fill="none" stroke="#D9E6F1" stroke-width="2"><line x1="20" y1="40" x2="600" y2="40"/><line x1="20" y1="105" x2="600" y2="105"/><line x1="20" y1="170" x2="600" y2="170"/></g>
+            <text x="20" y="78" class="lbl">Analysis of the role</text>
+            <rect x="170" y="60" width="120" height="28" rx="14" fill="#DDEFE4"/><text x="230" y="79" text-anchor="middle" class="chip" fill="#2E7D5B">excellent</text>
+            <rect x="410" y="60" width="120" height="28" rx="14" fill="#EEF3F8"/><text x="470" y="79" text-anchor="middle" class="chip" fill="#55665F">thinner</text>
+            <text x="20" y="143" class="lbl">The resume it built</text>
+            <rect x="170" y="125" width="120" height="28" rx="14" fill="#FFE3EE"/><text x="230" y="144" text-anchor="middle" class="chip" fill="#B9306A">weak</text>
+            <rect x="410" y="125" width="120" height="28" rx="14" fill="#DDEFE4"/><text x="470" y="144" text-anchor="middle" class="chip" fill="#2E7D5B">strong</text>
+            <text x="310" y="192" text-anchor="middle" class="sm">My read, not a measured score. Graded separately, then routed separately.</text>
+          </svg>
+          <figcaption>Great advice and a weak document can come from the same tool.</figcaption>
+        </figure>
+        <div class="attrib">
+          <div><h4>What I did</h4><ul><li>Set the brief and the no invention rule for both tools</li><li>Read both documents as the recruiter would and graded them against the analysis</li><li>Named the gap, asked for a diagnosis, kept the rules, rerouted the work</li></ul></div>
+          <div class="ai"><h4>What AI did</h4><ul><li>Tool A: the role analysis, a weak resume, the diagnosis, and the handoff file</li><li>Tool B: the resume that shipped</li></ul></div>
+        </div>
+        <details class="rungs"><summary>How it went up the ladder</summary>
+          <div class="steps">
+            <div class="step"><div class="k">Frame</div><p>The job was a two page resume that passes a skeptical recruiter's read, with every claim traceable to my master resume. Good advice was not the deliverable.</p></div>
+            <div class="step"><div class="k">Brief</div><p>Both tools had the same inputs: the posting, the master resume, my formatting rules, and my standing instruction never to invent or inflate a figure.</p></div>
+            <div class="step"><div class="k">Check</div><p>I read both documents the way the recruiter would, side by side, and compared each against the analysis I had already accepted. One matched its own advice. One did not.</p></div>
+            <div class="step"><div class="k">Decide</div><p>I told the first tool its feedback was great and its execution was much worse, and asked it to diagnose the gap. Seven production rules came out of that, including the one I now apply everywhere: the finished artifact has to match the quality of the analysis that preceded it, or the analysis was not finished.</p></div>
+            <div class="step"><div class="k">Hand off</div><p>I had the first tool write a handoff file carrying the analysis, the revisions, and the new rules, and moved document production to the second tool permanently.</p></div>
+          </div></details>
+        <div class="lesson"><b>What I would teach from this</b><p>A tool that explains well has not proven it can build well. Grade the artifact, not the conversation. This is the first exercise I would run with any team: same brief, two tools, grade the outputs blind.</p></div>
+      </article>
+
+      <article class="case support" id="case-howiwork">
+        <div class="meta">July 2026 · Interviewing for a senior manager role at a large industrial supply company</div>
+        <h3>The one page that explains how I lead</h3>
+        <p>Between a recruiter screen and a hiring manager interview, I turned ten years of operating habits into the page you read above: three named practices, a cake on every step, results and principles along the bottom, built for one reader in her company's colors. I dictated ten stories, AI scripted them, and every number was marked either on record (it matched the documents I had submitted) or flagged (from memory, verify before saying it aloud). The reconciliation caught drift between resume versions and one place where the tool produced a logo and presented it as mine. I was cut before the panel round. The page outlived the process.</p>
+        <figure class="figure">
+          <svg class="diagram" viewBox="0 0 620 150" role="img" aria-label="Process: dictated stories, scripted by AI, checked against the submitted resume with on record and flag markers, then drawn as one page">
+            <defs><style>.l3{font-family:Nunito,sans-serif;font-size:13.5px;fill:#1E2A28;font-weight:800}.s3{font-family:Nunito,sans-serif;font-size:12px;fill:#55665F}.h3{font-family:Caveat,cursive;font-size:20px;fill:#B9306A}</style></defs>
+            <g fill="none" stroke="#E8558E" stroke-width="3" stroke-linecap="round"><path d="M128 70 C 150 60, 160 80, 182 70"/><path d="M288 70 C 310 60, 320 80, 342 70"/><path d="M448 70 C 470 60, 480 80, 502 70"/></g>
+            <g><rect x="10" y="40" width="118" height="60" rx="8" fill="#FFE3EE"/><text x="69" y="66" text-anchor="middle" class="l3">10 stories</text><text x="69" y="84" text-anchor="middle" class="s3">dictated raw, out loud</text></g>
+            <g><rect x="182" y="40" width="106" height="60" rx="8" fill="#EEF3F8"/><text x="235" y="66" text-anchor="middle" class="l3">AI scripts</text><text x="235" y="84" text-anchor="middle" class="s3">openers and bridges</text></g>
+            <g><rect x="342" y="40" width="106" height="60" rx="8" fill="#DDEFE4"/><text x="395" y="66" text-anchor="middle" class="l3">Checked</text><text x="395" y="84" text-anchor="middle" class="s3">against the resume I sent</text></g>
+            <g><rect x="502" y="40" width="108" height="60" rx="8" fill="#F2C14E"/><text x="556" y="66" text-anchor="middle" class="l3">One page</text><text x="556" y="84" text-anchor="middle" class="s3">for one reader</text></g>
+            <text x="395" y="132" text-anchor="middle" class="h3">every number marked: on record, or flagged</text>
+          </svg>
+          <figcaption>A case study that ends in a no and a reusable asset.</figcaption>
+        </figure>
+        <details class="rungs"><summary>How it went up the ladder</summary>
+          <div class="steps">
+            <div class="step"><div class="k">Frame</div><p>The recruiter had told me what the hiring manager cared about: strengthening operations first, building capacity, then automating, before adding programs. I needed to show her how I do that, in a form she could hold, in under a week.</p></div>
+            <div class="step"><div class="k">Brief</div><p>I dictated ten stories the way I would tell them aloud, gave the tool the resume and cover letter I had actually submitted, and set two rules: every number gets marked on record or flagged, and nothing gets invented to fill a gap.</p></div>
+            <div class="step"><div class="k">Check</div><p>The reconciliation caught real drift: figures that had shifted between resume versions, a team structure described two ways, and a logo the tool had produced and presented as mine. I replaced it with the real asset and wrote a standing rule that day: never fabricate a branding asset and present it as preexisting. Ask first.</p></div>
+            <div class="step"><div class="k">Decide</div><p>The frameworks already existed in how I worked. What the tool contributed was the discipline of naming them, sequencing them, and finding the one analogy that let a stranger follow all three in a minute.</p></div>
+            <div class="step"><div class="k">Hand off</div><p>The three practices are now the How I lead section of this site, the ten stories are the bank I pull from in interviews, and the on record and flag markers became how I check every application document.</p></div>
+          </div></details>
+        <div class="lesson"><b>What I would teach from this</b><p>Make the tool show its sources. A two mark system, verified or not, turns AI drafting from a liability into a discipline, and it is the first habit I would give anyone who writes about their own work with these tools.</p></div>
+      </article>
+
+      <article class="case support" id="case-launchpad">
+        <div class="meta">August 2026 · Personal · A web page that reads my calendars</div>
+        <h3>A morning that reads the calendar before I do</h3>
+        <p>The Morning Launchpad pulls today from my personal, business, and work calendars, decides which of three versions of the morning applies, and walks me through it: grounding, a timed brain dump, three priorities in a fixed order, and a threshold I cross before any inbox opens. The version I am proudest of is The Floor, for very early or very hard starts, where every step shrinks but none disappears. It has been my first screen most mornings since.</p>
+        <figure class="figure">
+          <div class="shots">
+            <div class="shot r1"><span class="tape"></span><img src="img/launchpad-card.webp" alt="The Launchpad's first card: it reads the calendars, picks the routine version, and offers The Floor for a rough morning" width="520" height="480"></div>
+            <div class="shot r2"><span class="tape"></span><img src="img/launchpad-floor.webp" alt="The Floor routine: seven short steps totaling about fifteen minutes, each tapped off as it is done" width="570" height="535"></div>
+          </div>
+          <figcaption>Left: the page decides which morning this is. Right: The Floor, the routine condensed rather than skipped.</figcaption>
+        </figure>
+        <details class="rungs"><summary>How it went up the ladder</summary>
+          <div class="steps">
+            <div class="step"><div class="k">Frame</div><p>The routine I knew worked only survived on days that cooperated. An early meeting, a rough night, or a full inbox would collapse it, and <span class="hl g">a routine that only works on good days is not a routine</span>.</p></div>
+            <div class="step"><div class="k">Brief</div><p>I wrote the routine down in three versions before any code existed, specified what the page should read from my calendars to choose between them, and what it should never do, which is send anything anywhere.</p></div>
+            <div class="step"><div class="k">Check</div><p>I tested the smallest version on the mornings when the full routine was out of reach. If The Floor could get me from waking up to one named priority on a day I would otherwise have skipped everything, the design held. It did, often enough that I trust it.</p></div>
+            <div class="step"><div class="k">Decide</div><p>What stayed was deliberately small: water and medication, a short grounding read aloud, a brain dump that archives itself, the Rule of Three (the essential job outcome, one thing for me, my business only if there is room), and a first message window set to a time of day rather than a feeling. This is Designed Participation turned on myself: design for variable capacity, and lower the cost of showing up.</p></div>
+            <div class="step"><div class="k">Hand off</div><p>Underneath the routine sits a step tracker that breaks a larger plan into moves of thirty minutes or less, and a weekly mobility tracker that counts any day, consecutive or not, because streaks punish the people who need the habit most.</p></div>
+          </div></details>
+        <div class="lesson"><b>What I would teach from this</b><p>Design for the worst day, not the best one. A habit survives when its smallest version is still recognizably the habit, and when the tool does the remembering so the person does not have to.</p></div>
+      </article>
+
+    </div>
+
+    <div class="queue">
+      <div class="item"><div><b>Sounding like myself.</b> The voice rules I wrote so AI drafts read as mine, and the dictation first workflow that makes them work.</div><span class="pill">next</span></div>
+      <div class="item"><div><b>The Weekly Job Sweep.</b> A scheduled agent governed by a written spec, six filters, a "never" list, and a running log, revised twice after real use.</div><span class="pill">coming</span></div>
+      <div class="item"><div><b>Modeled is not measured.</b> A Monte Carlo simulation of a university career office, and the rules I set so simulated results were never mistaken for observed ones.</div><span class="pill">coming</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ruled" id="tools">
+  <div class="wrap">
+    <span class="pg">p. 5</span>
+    <h2>Tools I built for myself</h2>
+    <p class="lede">None of these were built for a client or an employer. Each one exists because something in my week kept costing attention, and an hour of building was cheaper than ten minutes a day of the problem.</p>
+    <div class="tools">
+      <div class="tool"><span class="tag">every morning</span><b>Coach's Desk</b><span class="d">Reads my client board, six calendars, booking links, email, and meeting recordings, then writes one page: what needs a decision today, what the next nine days hold, and who is waiting on me. It tests live booking links rather than trusting them.</span></div>
+      <div class="tool"><span class="tag">coaching</span><b>Resume Combiner</b><span class="d">Builds a tagged inventory of a person's resume bullets by verb family, function, and quantified result, then matches a pasted job description to the strongest ones and lists the gaps.</span></div>
+      <div class="tool"><span class="tag">operations</span><b>Quinn Reply Bank</b><span class="d">A library of first replies for my operations manager, organized by the situation a message arrives in, so routine inbound gets a consistent, warm answer within the hour without me in the loop.</span></div>
+      <div class="tool"><span class="tag">the business</span><b>Money Split</b><span class="d">A profit first calculator. Enter what came in and adjustable splits divide it into taxes, pay, operating, and profit, mapped to the real accounts the money moves to.</span></div>
+      <div class="tool"><span class="tag">research</span><b>Cross-Sector Title Map</b><span class="d">Maps the same work across sectors where it hides under different job titles. It is the private half of the Career Fit Tool: the tool shows functions, this holds the titles, and the titles stay with me.</span></div>
+      <div class="tool"><span class="tag">thinking</span><b>Ideas Notebook</b><span class="d">A running notebook of observations and hypotheses where I use AI to find the competing explanation and the research tradition behind an idea before I decide what I think.</span></div>
+    </div>
+
+    <div class="offclock">
+      <div class="txt">
+        <span class="hand">Off the clock</span>
+        <h3 style="margin-top:6px">106 and Paige: a game show for one night</h3>
+        <p>For my birthday I built a two screen party game: a host panel on my laptop and a separate audience display on the TV, twenty five dance crazes with clip times and trivia, team scoring, steals, and a lightning medley. The host sees the song title. The room never does. It has a nonalcoholic mode, a reduced motion setting, and a Media Lab so the next host can swap in their own era without touching code.</p>
+        <p>Same habits as the work tools: decide what each audience needs to see, plan for the failure that will happen in the room, and leave it in a state someone else can run.</p>
+      </div>
+      <div class="mini">
+        <div class="shot r2"><img src="img/game-host.webp" alt="The host panel, showing the song title, round controls, and team scores" width="1000" height="562"></div>
+        <div class="shot r1"><img src="img/game-audience.webp" alt="The audience display: Round 1, Get Ready, team scores, and no song title" width="1000" height="562"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ruled" id="watch">
+  <div class="wrap">
+    <h2>Watch me work</h2>
+    <p class="lede">Written case studies show the decisions. These show the pace: what I ask, where I push back, and what I check before I trust an answer.</p>
+    <div class="rec-note">
+      <div><p>Three short recordings are on the way: briefing a tool before the first prompt, checking a draft against its source, and turning a one time task into a routine. Each one under five minutes, narrated as I go.</p></div>
+      <span class="hand">Coming soon. Short ones, I promise.</span>
+    </div>
+  </div>
+</section>
+
+<section class="board">
+  <div class="wrap">
+    <h2>The habit predates the tools</h2>
+    <p class="lede">Generative AI is the newest chapter of a ten year pattern: find the repeated work, build the system, hand it to the people who do the work. The behavioral science underneath it is not decoration. Two years in a lab studying how people form impressions and make decisions is where I learned to treat adoption as a design problem rather than a willpower problem.</p>
+    <div class="lineage">
+      <div class="l"><b>Process automation</b><span>As a product change supervisor at an industrial distributor, redesigned the team's workflow on a business process platform, taking more than a hundred weekly overtime hours to zero and lifting accuracy and efficiency by forty percent.</span></div>
+      <div class="l"><b>Recruiting inbox automation</b><span>Built a tagging and routing system for a corporate recruiting inbox so that candidate questions reached the right person without a human sorting them.</span></div>
+      <div class="l"><b>A half million product pipeline</b><span>Wrote the SQL and Python that recategorized roughly 500,000 products out of a mainframe system, with the ground truth checks that made the output trustworthy.</span></div>
+      <div class="l"><b>Behavioral measurement</b><span>Two years as a research assistant in a social neuroscience lab studying how people form impressions and make decisions, and later a simulation based leadership assessment that measured how candidates handled conflict.</span></div>
+    </div>
+    <span class="hand margin-note" style="color:#FFB7D1">None of this needed a chatbot. All of it needed the habit.</span>
+  </div>
+</section>
+
+<section class="ruled" id="teaching">
+  <div class="wrap">
+    <span class="pg">p. 6</span>
+    <h2>Where other people have picked it up</h2>
+    <div class="teach">
+      <div class="t"><div class="d">Nov 12, 2026<br><span style="font-size:17px">scheduled</span></div><div><b>Multiply Yourself: How to Serve More Students Without Sacrificing Results.</b> A 45 minute session for university career center leaders at the NACE Competency Symposium, with practical AI examples drawn from my own caseload rather than general productivity advice. The Career Fit Tool is the centerpiece. The recording will be linked here afterward.</div></div>
+      <div class="t"><div class="d">Since Aug 2026</div><div><b>Clients using the Career Fit Tool before we meet.</b> It replaced two weeks of homework in my coaching program, so the first session starts at the interesting part.</div></div>
+      <div class="t"><div class="d">2026</div><div><b>Students drafting first.</b> At a private university in Chicago, I set up a workflow where students produce a first resume draft, including through responsible AI use, before meeting with an advisor, so appointment time goes to judgment instead of formatting.</div></div>
+      <div class="t"><div class="d">2025</div><div><b>The handbook review.</b> At a nonprofit where I introduced AI assisted hiring tools, the Executive Director was reviewing the employee handbook with AI on her own by the time I left.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="ruled" id="contact">
+  <div class="wrap">
+    <h2>I would be glad to talk</h2>
+    <p class="lede">If your organization is trying to make generative AI <span class="hl">a working habit rather than an experiment</span>, I would appreciate the conversation.</p>
+    <div class="contact">
+      <div class="row"><span class="lbl">Email</span><a href="mailto:williams.paige2@gmail.com"><code>williams.paige2@gmail.com</code></a></div>
+      <div class="row"><span class="lbl">LinkedIn</span><a href="https://www.linkedin.com/in/paige-w-mapp" rel="noopener">linkedin.com/in/paige-w-mapp</a></div>
+      <div class="row"><span class="lbl">Resume</span><span style="color:var(--muted)">PDF coming</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">Paige Williams · Chicago · Zero to Routine</footer>
+</body>
+</html>
